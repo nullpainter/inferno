@@ -1,0 +1,12 @@
+
+    ,.   (   .      )        .      "
+   ("     )  )'     ,'        )  . (`     '`
+ .; )  ' (( (" )    ;(,     ((  (  ;)  "  )"
+ _"., ,._'_.,)_(..,( . )_  _' )_') (. _..( '..
+ 
+GET  /status        get LED status
+POST /off           turn LEDs off
+POST /on            turn LEDS on
+POST /monitor       enable monitoring
+
+
