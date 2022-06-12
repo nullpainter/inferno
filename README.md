@@ -7,8 +7,8 @@ Inferno is a Slackbot-enabled LED flame, running on ESP8266 hardware. It's desig
 
 ## Glamour shots
 
-<img src="https://github.com/nullpainter/inferno/blob/main/images/front.jpg" width="49%" align="left" alt="Front" />
-<img src="https://github.com/nullpainter/inferno/blob/main/images/back.jpg" width="49%" style="margin-left: 15px" alt="Back" />
+<img src="https://github.com/nullpainter/inferno/blob/main/images/front.jpg" width="48%" align="left" alt="Front" />
+<img src="https://github.com/nullpainter/inferno/blob/main/images/back.jpg" width="48%" style="margin-left: 15px" alt="Back" />
 
 ## Usage
 
