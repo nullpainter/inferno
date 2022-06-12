@@ -43,7 +43,7 @@ void StateManager::setState(State state, bool immediate)
         _state = state;
         break;
     case Monitor:
-        Serial.println("Updating state to monitor");
+        Serial.println("[StateManager] Updating state to monitor");
 
         if (!immediate)
         {
