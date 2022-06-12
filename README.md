@@ -21,7 +21,7 @@ Assuming a Slack bot has been created with the name `@Inferno`, the following co
 * `@Inferno on` turn on flame 
 * `@Inferno off` turn off flame, enable monitoring mode
 
-Additionally, if the text `[Alerting]` or `Triggered: ` appears in any Slack channel that the Slack bot is a member of, Inferno turns on for a predefined period of time.
+Additionally, if the text `[Alerting]` or `Triggered:` appears in any Slack channel that the Slack bot is a member of, Inferno turns on for a predefined period of time.
 
 ### Web server
 
@@ -42,7 +42,7 @@ POST /monitor       enable monitoring
 
 ## Building
 
-Inferno is built with the Ar
+Inferno is built with the Arduino and depends on Arduino libraries to run.
 
 ### Slack configuration
 
