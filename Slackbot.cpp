@@ -28,7 +28,7 @@ bool Slackbot::commandReceived(const char *text, const char *command)
 void Slackbot::processPayload(char *payload)
 {
     // Deserialize the document
-    DynamicJsonDocument doc(2048);
+    DynamicJsonDocument doc(4096);
     DeserializationError error = deserializeJson(doc, payload, DeserializationOption::Filter(_payloadFilter));
 
     if (error)
