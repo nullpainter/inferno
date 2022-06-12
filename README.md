@@ -42,7 +42,7 @@ POST /monitor       enable monitoring
 
 ## Building
 
-Inferno is built with the Arduino and depends on Arduino libraries to run. It is recommended to set the ESP8266's clock to 160Mhz due to the use of SSL.
+Inferno depends on Arduino libraries to run. It is also recommended to set the ESP8266's clock to 160Mhz due to the use of SSL.
 
 ### Slack configuration
 
