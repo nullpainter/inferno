@@ -75,12 +75,20 @@ void loop()
   }
 }
 
+/**
+ * @brief blinks the red LED.
+ */
 void wifiConnectCallback()
 {
   redLed->toggle();
   redLed->update();
 }
 
+/**
+ * @brief randomly sets the intensity of a random LED for a random interval, simulating a 
+ * flame effect.
+ * 
+ */
 void fireCallback()
 {
   Led *led = &leds[random(NUM_LEDS)];
