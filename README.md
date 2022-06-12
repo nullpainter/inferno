@@ -59,13 +59,17 @@ LED pin assignment is defined in `Inferno.h`. Pin to GPIO mappings can be found 
 
 ### Libraries
 
-Inferno was created using Arduino libraries. The following libraries are required:
+The following Arduino libraries are required:
 
 * [WIFIManager](https://github.com/tzapu/WiFiManager)
-* [ESP8266WiFi](https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/readme.html)
 * [TaskScheduler](https://github.com/arkhipenko/TaskScheduler)
 * [ArduinoWebSockets](https://github.com/gilmaimon/ArduinoWebsockets)
 * [ArduinoJson](https://arduinojson.org/)
+* [Regexp](https://github.com/nickgammon/Regexp)
+* [ESP8266WiFi](https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/readme.html)
+* [ESP8266WebServer](https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266WebServer)
+* [ESP8266HTTPClient](https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266HTTPClient)
+
 
 
 ## Caveats
