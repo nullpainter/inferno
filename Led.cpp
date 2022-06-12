@@ -41,7 +41,7 @@ void Led::update()
             }
             else
             {
-                Serial.printf("[LED %d] completed fade\n", _pin);
+                Serial.printf("[LED %d] Completed fade\n", _pin);
 
                 // If fading has completed, reset state to normal
                 _maxIntensity = _ledState == FadeIn ? MAX_INTENSITY : 0;
