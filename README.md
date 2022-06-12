@@ -1,9 +1,9 @@
 # Inferno
 
 
-Inferno is a Slackbot-enabled LED flame. It's designed for use in a modded 100% Soft's [Dumpster Fire - This is Fine vinyl figure](https://100soft.shop/products/dumpster-fire-this-is-fine-vinyl-figure) and for integration with Slack-based alerting. In addition to Slack integration, Inferno also provides a web server.
+Inferno is a Slackbot-enabled LED flame, running on ESP8266 hardware. It's designed for use in a modded 100% Soft's [Dumpster Fire - This is Fine vinyl figure](https://100soft.shop/products/dumpster-fire-this-is-fine-vinyl-figure) and for integration with Slack-based alerting. In addition to Slack integration, Inferno also provides a web server to control and display status.
 
-<img src="https://github.com/nullpainter/inferno/blob/main/images/animation.gif" align="left" alt="This is fine." />
+<img src="https://github.com/nullpainter/inferno/blob/main/images/animation.gif" alt="This is fine." />
 
 ## Glamour shots
 
