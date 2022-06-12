@@ -8,8 +8,19 @@
 class WifiControl
 {
 public:
+    /**
+     * @brief initialises WiFi
+     */
     static void setup();
+
+    /**
+     * @brief 
+     */
     static void update();
+
+    /**
+     * @return true if Inferno has connected to a WiFi network
+     */
     static bool connected();
 
 private:
