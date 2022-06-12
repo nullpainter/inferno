@@ -1,6 +1,5 @@
 #include <cstring>
 #include "UrlParser.h"
-#include "Arduino.h"
 
 bool UrlParser::parse(char *text, Url &url)
 {

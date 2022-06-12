@@ -32,9 +32,9 @@ POST /on            turn LEDS on
 POST /monitor       enable monitoring
 ```
 
-
 ## Building
 
+Inferno is built with the Ar
 
 ### Slack configuration
 
@@ -47,7 +47,7 @@ These files should contain a single line containg the Slack bot id and OAuth tok
 
 ### LED pins
 
-LED pin assignment is defined in `Inferno.h`. 
+LED pin assignment is defined in `Inferno.h`. Pin to GPIO mappings can be found [here](https://randomnerdtutorials.com/esp8266-pinout-reference-gpios/).
 
 The ESP8266 should be configured to run at 160 Mhz as per BearSSL's instructions. This is due to the time taken to process SSL queries.
 

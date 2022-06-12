@@ -1,6 +1,6 @@
+#include <Arduino.h>
 #include "LedControl.h"
 #include "StateManager.h"
-#include "Arduino.h"
 
 State StateManager::_state = State::Off;
 bool StateManager::_initialised = false;
