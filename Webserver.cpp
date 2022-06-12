@@ -76,7 +76,7 @@ void Webserver::fire()
 
 void Webserver::off()
 {
-  if (!Webserver::verifyPost())
+  if (!verifyPost())
   {
     help();
     return;
@@ -88,7 +88,7 @@ void Webserver::off()
 
 void Webserver::on()
 {
-  if (!Webserver::verifyPost())
+  if (!verifyPost())
   {
     help();
     return;
@@ -100,7 +100,7 @@ void Webserver::on()
 
 void Webserver::monitor()
 {
-  if (!Webserver::verifyPost())
+  if (!verifyPost())
   {
     help();
     return;

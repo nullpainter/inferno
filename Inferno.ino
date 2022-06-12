@@ -43,7 +43,7 @@ void loop()
 
   if (!WifiControl::connected())
   {
-    // Enable WiFi connect animation
+    // Enable WiFi connect animation if WiFi isn't connected
     if (!wifiConnectTask.isEnabled())
     {
       LedControl::setIntensity(0);
@@ -52,7 +52,7 @@ void loop()
   }
   else
   {
-    // Disable WiFi connect animation
+    // Disable WiFi connect animation after Wifi is connected
     if (wifiConnectTask.isEnabled())
     {
       wifiConnectTask.disable();
