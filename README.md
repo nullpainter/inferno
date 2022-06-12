@@ -55,9 +55,7 @@ These files should contain a single line containg the Slack bot id and OAuth tok
 
 ### LED pins
 
-LED pin assignment is defined in `Inferno.h`. Pin to GPIO mappings can be found [here](https://randomnerdtutorials.com/esp8266-pinout-reference-gpios/).
-
-The ESP8266 should be configured to run at 160 Mhz as per BearSSL's instructions. This is due to the time taken to process SSL queries.
+LED pin assignment is defined in `Inferno.h`. Pin to GPIO mappings can be found [here](https://randomnerdtutorials.com/esp8266-pinout-reference-gpios/). Inferno relies on PWM for the flame effect, so the LEDs need to be connected to GPIO pins which can provide PWM.
 
 ### Libraries
 
