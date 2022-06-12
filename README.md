@@ -3,6 +3,8 @@
 
 Inferno is a Slackbot-enabled LED flame, running on ESP8266 hardware. It's designed for use in a modded 100% Soft's [Dumpster Fire - This is Fine](https://100soft.shop/products/dumpster-fire-this-is-fine-vinyl-figure)  vinyl figure and for integration with Slack-based alerting. In addition to Slack integration, Inferno also provides a web server to control and display status.
 
+The flame effect is achieved by using two orange, one red and one yellow LED. Each LED is assigned a clamped random intensity and random period of time to remain at this intensity. A piece of baking paper is used to diffuse the LEDs.
+
 <img src="https://github.com/nullpainter/inferno/blob/main/images/animation.gif" alt="This is fine." />
 
 ## Glamour shots
@@ -12,7 +14,7 @@ Inferno is a Slackbot-enabled LED flame, running on ESP8266 hardware. It's desig
 
 ## Usage
 
-When first turned on, Inferno creates a WiFi AP called `Inferno`. Connect to this in order to select an internet-enabled WiFi network for Inferno to join to. If the saved WiFi network is ever not availableon startup, this AP will be created.
+When first turned on, Inferno creates a WiFi AP called `Inferno`. Connect to this in order to select an internet-enabled WiFi network for Inferno to join. If a saved WiFi network is not available on startup, this AP will be created.
 
 ### Slack 
 
@@ -28,7 +30,6 @@ Additionally, if the text `[Alerting]` or `Triggered:` appears in any Slack chan
 Inferno creates a web server on port 80. Issuing a `GET` will list the available commands:
 
 ```
-
     ,.   (   .      )        .      "
    ("     )  )'     ,'        )  . (`     '`
  .; )  ' (( (" )    ;(,     ((  (  ;)  "  )"
@@ -42,11 +43,11 @@ POST /monitor       enable monitoring
 
 ## Building
 
-Inferno depends on Arduino libraries to run. It is also recommended to set the ESP8266's clock to 160Mhz due to the use of SSL.
+Inferno depends on Arduino libraries to run. It is recommended to set the ESP8266's clock to 160 Mhz due to the use of SSL.
 
-### Slack configuration
+### Flash
 
-Inferno expects the following files to be present in flash:
+The contents of the `data` folder should be uploaded to flash. In addition, Inferno expects the following files to be present in flash:
 
 * `data/secrets/slackBotId.txt`
 * `data/secrets/slackToken.txt`
