@@ -35,24 +35,32 @@ void Webserver::status()
     return;
   }
 
-  String status;
-
+  // Get status text
+  char buffer[64];
   switch (StateManager::getState())
   {
   case On:
-    status = "on";
+    strcpy(buffer, "on");
     break;
   case Off:
-    status = "off";
+    strcpy(buffer, "off");
     break;
   case Monitor:
-    status = "monitoring";
+    strcpy(buffer, "monitoring");
     break;
   }
 
-  String response = file.readString();
-  response.replace("{status}", status);
+  // Append free heap text
+  long freeMemoryBytes = ESP.getFreeHeap();
 
+  char memoryBuffer[255];
+  sprintf(memoryBuffer, ", free heap: %dKB", (freeMemoryBytes / 1024));
+  strcat(buffer, memoryBuffer);
+
+  String response = file.readString();
+  response.replace("{status}", buffer);
+
+  // Send response
   _server.send(200, "text/plain", response);
 }
 
