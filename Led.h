@@ -2,7 +2,7 @@
 #define _LED_H_
 
 // clang-format off
-static const uint8_t LOG_CURVE[256] = {
+static const unsigned char LOG_CURVE[256] = {
    0,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
    1,  1,  1,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,
    2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  3,  3,  3,  3,  3,
@@ -43,8 +43,10 @@ public:
 
 private:
     int _fadeDuration;
+    int _blinDuration;
     int _fadeDelay;
     int _intensity;
+    int _maxIntensity;
     int _pin;
     LedState _ledState;
     unsigned long _startMillis;

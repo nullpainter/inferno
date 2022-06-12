@@ -1,59 +1,29 @@
+#include <cstring>
 #include "UrlParser.h"
+#include "Arduino.h"
 
-void UrlParser::parseUrl(String urlString, Url *url)
+bool UrlParser::parse(char *text, Url &url)
 {
+    MatchState matchState;
+    matchState.Target(text);
 
-    // Assume a valid URL
-    enum URLParseState
+    // Match on host and path only
+    char result = matchState.Match("[a-z]+:\/\/([^/]+)(.*)");
+
+    if (result != REGEXP_MATCHED)
     {
-        PROTOCOL,
-        SEPERATOR,
-        HOST,
-        PORT,
-        PATH
-    } state = PROTOCOL;
-
-    url->protocol = "";
-    url->host = "";
-    url->port = "";
-    url->path = "/";
-
-    for (int i = 0; i < urlString.length(); i++)
-    {
-        switch (state)
-        {
-        case PROTOCOL:
-            if (urlString[i] == ':')
-                state = SEPERATOR;
-            else
-                url->protocol += urlString[i];
-            break;
-        case SEPERATOR:
-            if (urlString[i] != '/')
-            {
-                state = HOST;
-                url->host += urlString[i];
-            }
-            break;
-        case HOST:
-            if (urlString[i] == ':')
-                state = PORT;
-            else
-            {
-                if (urlString[i] == '/')
-                    state = PATH;
-                else
-                    url->host += urlString[i];
-            }
-            break;
-        case PORT:
-            if (urlString[i] == '/')
-                state = PATH;
-            else
-                url->port += urlString[i];
-            break;
-        case PATH:
-            url->path += urlString[i];
-        }
+        return false;
     }
+    
+    char buffer[512];
+
+    // Extract host
+    matchState.GetCapture(buffer, 0);
+    strcpy(url.host, buffer);
+
+    // Extract path
+    matchState.GetCapture(buffer, 1);
+    strcpy(url.path, buffer);
+
+    return true;
 }

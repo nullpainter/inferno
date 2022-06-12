@@ -24,6 +24,14 @@ private:
     static void on();
     static void monitor();
     static bool verifyPost();
-    static void writeResponse(const String &path);
+
+    /**
+     * @brief Reads contents of a file, sending it as HTTP 200 response.
+     *
+     * @param path path to file on flash to write to response
+     */
+    static void writeResponse(const char *path);
+
+    
 };
 #endif

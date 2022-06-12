@@ -1,11 +1,14 @@
 #ifndef _LEDCONTROL_H_
 #define _LEDCONTROL_H_
 
-#include "Flame.h"
 #include "Led.h"
+#include "Inferno.h"
 
 #define MAX_LEDS 4
 
+/**
+ * @brief performs global controls of all registered LEDs.
+ */
 class LedControl
 {
 public:
@@ -18,7 +21,7 @@ public:
     static void fadeOut(int duration = FADE_DURATION, int delay = 0);
 
 private:
-    static byte _ledCount;
+    static unsigned char _ledCount;
     static Led *_leds[MAX_LEDS];
 };
 #endif
