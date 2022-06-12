@@ -28,7 +28,6 @@ Additionally, if the text `[Alerting]` or `Triggered:` appears in any Slack chan
 Inferno creates a web server on port 80. Issuing a `GET` will list the available commands:
 
 ```
-
     ,.   (   .      )        .      "
    ("     )  )'     ,'        )  . (`     '`
  .; )  ' (( (" )    ;(,     ((  (  ;)  "  )"
@@ -42,7 +41,7 @@ POST /monitor       enable monitoring
 
 ## Building
 
-Inferno depends on Arduino libraries to run. It is also recommended to set the ESP8266's clock to 160Mhz due to the use of SSL.
+Inferno depends on Arduino libraries to run. It is recommended to set the ESP8266's clock to 160 Mhz due to the use of SSL.
 
 ### Flash
 
