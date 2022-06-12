@@ -13,48 +13,48 @@ void LedControl::add(Led *led)
 
 void LedControl::setIntensity(int intensity)
 {
-    for (int i = 0; i < _ledCount; i++)
+    for (Led *led : _leds)
     {
-        _leds[i]->setIntensity(intensity);
+        led->setIntensity(intensity);
     }
 }
 
 void LedControl::on()
 {
-    for (int i = 0; i < _ledCount; i++)
+    for (Led *led : _leds)
     {
-        _leds[i]->on();
+        led->on();
     }
 }
 
 void LedControl::off()
 {
-    for (int i = 0; i < _ledCount; i++)
+    for (Led *led : _leds)
     {
-        _leds[i]->off();
+        led->off();
     }
 }
 
 void LedControl::fadeIn(int duration)
 {
-    for (int i = 0; i < _ledCount; i++)
+    for (Led *led : _leds)
     {
-        _leds[i]->fadeIn(duration);
+        led->fadeIn(duration);
     }
 }
 
 void LedControl::fadeOut(int duration, int delay)
 {
-    for (int i = 0; i < _ledCount; i++)
+    for (Led *led : _leds)
     {
-        _leds[i]->fadeOut(duration, delay);
+        led->fadeOut(duration, delay);
     }
 }
 
 void LedControl::update()
 {
-    for (int i = 0; i < _ledCount; i++)
+    for (Led *led : _leds)
     {
-        _leds[i]->update();
+        led->update();
     }
 }
