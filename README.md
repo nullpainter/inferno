@@ -12,7 +12,7 @@ Inferno is a Slackbot-enabled LED flame, running on ESP8266 hardware. It's desig
 
 ## Usage
 
-When first turned on, Inferno creates a WiFi AP called `Inferno`. Connect to this in order to select an internet-enabled WiFi network for Inferno to join to. 
+When first turned on, Inferno creates a WiFi AP called `Inferno`. Connect to this in order to select an internet-enabled WiFi network for Inferno to join to. If the saved WiFi network is ever not availableon startup, this AP will be created.
 
 ### Slack 
 
