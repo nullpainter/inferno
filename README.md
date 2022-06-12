@@ -25,7 +25,7 @@ Additionally, if the text `[Alerting]` or `Triggered:` appears in any Slack chan
 
 ### Web server
 
-Inferno creates a web server on port 80. Issuing a GET will list the available commands:
+Inferno creates a web server on port 80. Issuing a `GET` will list the available commands:
 
 ```
 
