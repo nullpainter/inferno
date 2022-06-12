@@ -44,9 +44,9 @@ POST /monitor       enable monitoring
 
 Inferno depends on Arduino libraries to run. It is also recommended to set the ESP8266's clock to 160Mhz due to the use of SSL.
 
-### Slack configuration
+### Flash
 
-Inferno expects the following files to be present in flash:
+The contents of the `data` folder should be uploaded to flash. In addition, Inferno expects the following files to be present in flash:
 
 * `data/secrets/slackBotId.txt`
 * `data/secrets/slackToken.txt`
