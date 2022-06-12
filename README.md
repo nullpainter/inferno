@@ -2,6 +2,9 @@
 
 Inferno is a Slackbot-enabled LED flame. It's designed for use in a modded 100% Soft's [Dumpster Fire - This is Fine vinyl figure](https://100soft.shop/products/dumpster-fire-this-is-fine-vinyl-figure) and for integration with Slack-based alerting. In addition to Slack integration, Inferno also provides a web server.
 
+<img src="https://github.com/nullpainter/inferno/blob/main/images/front.jpg" width="49%" alt="Front" />
+<img src="https://github.com/nullpainter/inferno/blob/main/images/back.jpg" width="49%" alt="Back" />
+
 ## Usage
 
 When first turned on, Inferno creates a WiFi AP called `Inferno`. Connect to this in order to select an internet-enabled WiFi network for Inferno to join to. 
