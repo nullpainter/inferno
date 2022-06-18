@@ -14,7 +14,6 @@ WebSocketsClient Slackbot::_webSocket;
 bool Slackbot::_connected = false;
 
 WiFiClientSecure Slackbot::_wifiClient;
-StaticJsonDocument<200> Slackbot::_payloadFilter;
 
 bool Slackbot::commandReceived(const char *text, const char *command)
 {
@@ -22,47 +21,30 @@ bool Slackbot::commandReceived(const char *text, const char *command)
     char buffer[512];
     snprintf(buffer, sizeof(buffer), "%s%s%s%s", "<@", _botId, "> ", command);
 
-    return strstr(text, buffer) ? true : false;
+    return strcasestr(text, buffer) ? true : false;
 }
 
 void Slackbot::processPayload(char *payload)
 {
-    // Deserialize the document
-    DynamicJsonDocument doc(4096);
-    DeserializationError error = deserializeJson(doc, payload, DeserializationOption::Filter(_payloadFilter));
-
-    if (error)
-    {
-        Serial.print(F("deserializeJson() failed with code "));
-        Serial.println(error.c_str());
-        return;
-    }
-
-    // Only process messages
-    if (doc[F("type")] != "message")
+    // Only process messages. Note that we're not deserializing JSON here as large payloads are too 
+    // large for the heap on ESP8266.
+    if (!strstr(payload, "\"type\":\"message\""))
     {
         return;
     }
-
-    serializeJsonPretty(doc, Serial);
-    Serial.println();
-
-    const char *text = (doc[F("text")]).as<char *>();
-    char buffer[256];
-    StaticJsonDocument<256> response;
 
     // Alert if an alerting indicator is present in the message and if Inferno's in a monitor state
     if (StateManager::getState() == State::Monitor &&
-        (strstr(text, slackAlertIndicator) || strstr(text, dataDogIndicator)))
+        (strstr(payload, slackAlertIndicator) || strstr(payload, dataDogIndicator)))
     {
         LedControl::on();
         LedControl::fadeOut(FADE_DURATION, UNHEALTHY_DURATION);
     }
-    else if (commandReceived(text, "on"))
+    else if (commandReceived(payload, "on"))
     {
         StateManager::setState(State::On);
     }
-    else if (commandReceived(text, "off"))
+    else if (commandReceived(payload, "off"))
     {
         // An "off" command is expected either after Inferno is in "on" state,
         // or in "monitoring" state but the monitoring incident has passed.
@@ -87,6 +69,7 @@ void Slackbot::webSocketEvent(WStype_t type, unsigned char *payload, unsigned lo
         break;
 
     case WStype_TEXT:
+        Serial.printf("[WebSocket] %s\n", payload);
         processPayload((char *)payload);
         break;
     }
@@ -121,13 +104,6 @@ bool Slackbot::readConfig()
     slackBotIdFile.close();
 
     return true;
-}
-
-void Slackbot::initialisePayloadFilters()
-{
-    _payloadFilter["type"] = true;
-    _payloadFilter["channel"] = true;
-    _payloadFilter["text"] = true;
 }
 
 bool Slackbot::authorise(Url &url)
@@ -179,8 +155,6 @@ bool Slackbot::authorise(Url &url)
 
 bool Slackbot::connect()
 {
-    initialisePayloadFilters();
-
     if (!readConfig())
     {
         return false;
