@@ -106,5 +106,5 @@ void Led::toggle()
 
 void Led::setIntensity(int intensity)
 {
-    _intensity = intensity;
+    _intensity = LOG_CURVE[intensity];
 }
