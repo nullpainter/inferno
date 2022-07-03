@@ -5,6 +5,7 @@
 #include "StateManager.h"
 #include "Slackbot.h"
 #include "Storage.h"
+#include "Inferno.h"
 
 char Slackbot::_botId[64];
 char Slackbot::_oauthToken[128];
@@ -26,7 +27,7 @@ bool Slackbot::commandReceived(const char *text, const char *command)
 
 void Slackbot::processPayload(char *payload)
 {
-    // Only process messages. Note that we're not deserializing JSON here as large payloads are too 
+    // Only process messages. Note that we're not deserializing JSON here as large payloads are too
     // large for the heap on ESP8266.
     if (!strstr(payload, "\"type\":\"message\""))
     {
@@ -38,11 +39,21 @@ void Slackbot::processPayload(char *payload)
         (strstr(payload, slackAlertIndicator) || strstr(payload, dataDogIndicator)))
     {
         LedControl::on();
-        LedControl::fadeOut(FADE_DURATION, UNHEALTHY_DURATION);
+        LedControl::fadeOut(UNHEALTHY_DURATION);
     }
     else if (commandReceived(payload, "on"))
     {
         StateManager::setState(State::On);
+    }
+    else if (commandReceived(payload, "party"))
+    {
+        LedControl::setMode(FlameMode::Party);
+        StateManager::setState(State::On);
+    }
+    else if (commandReceived(payload, "reset"))
+    {
+        LedControl::setMode(FlameMode::Flame);
+        StateManager::setState(State::Monitor);
     }
     else if (commandReceived(payload, "off"))
     {

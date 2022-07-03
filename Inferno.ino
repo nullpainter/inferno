@@ -1,101 +1,55 @@
-#include <TaskScheduler.h>
 #include <LittleFS.h>
 
-#include "Led.h"
-#include "LedControl.h"
 #include "Webserver.h"
 #include "StateManager.h"
 #include "Slackbot.h"
 #include "WifiControl.h"
+#include "LedControl.h"
 #include "Inferno.h"
 
-Led leds[] = {Led(D1), Led(D3), Led(D5), Led(D7)};
-Led *redLed = &leds[1];
-
-Scheduler scheduler;
 Webserver webserver;
 StateManager stateManager;
-
-void fireCallback();
-void wifiConnectCallback();
-
-Task fireTask(TASK_IMMEDIATE, TASK_FOREVER, &fireCallback);
-Task wifiConnectTask(BLINK_DURATION, TASK_FOREVER, &wifiConnectCallback);
 
 void setup()
 {
   Serial.begin(115200);
 
   WifiControl::setup();
-
-  scheduler.addTask(fireTask);
-  scheduler.addTask(wifiConnectTask);
+  LedControl::setup();
 
   LittleFS.begin();
   webserver.setup();
 }
 
+bool _wifiConnected;
+
 void loop()
 {
   WifiControl::update();
-  LedControl::update();
-  scheduler.execute();
 
   if (!WifiControl::connected())
   {
-    // Enable WiFi connect animation if WiFi isn't connected
-    if (!wifiConnectTask.isEnabled())
-    {
-      LedControl::setIntensity(0);
-      wifiConnectTask.enable();
-    }
+    LedControl::setMode(FlameMode::Offline);
+    _wifiConnected = false;
   }
   else
   {
-    // Disable WiFi connect animation after Wifi is connected
-    if (wifiConnectTask.isEnabled())
+    // Reset to flame mode after WiFi is connected
+    if (!_wifiConnected)
     {
-      wifiConnectTask.disable();
-    }
-
-    // Enable fire animation
-    if (!fireTask.isEnabled())
-    {
-      fireTask.enable();
+      LedControl::setMode(FlameMode::Flame);
+      _wifiConnected = true;
     }
 
     // Set default state to monitoring
     if (!StateManager::initialised())
     {
-      StateManager::setState(Monitor);
+      StateManager::setState(State::Monitor);
     }
 
     webserver.handleClient();
     Slackbot::update();
   }
-}
 
-/**
- * @brief blinks the red LED.
- */
-void wifiConnectCallback()
-{
-  redLed->toggle();
-  redLed->update();
-}
-
-/**
- * @brief randomly sets the intensity of a random LED for a random interval, simulating a 
- * flame effect.
- * 
- */
-void fireCallback()
-{
-  Led *led = &leds[random(NUM_LEDS)];
-
-  int intensity = random(MIN_INTENSITY, MAX_INTENSITY + 1);
-  int interval = random(MIN_LED_ON, MAX_LED_ON + 1);
-
-  led->setIntensity(intensity);
-  fireTask.setInterval(interval);
+  LedControl::update();
 }

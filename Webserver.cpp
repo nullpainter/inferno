@@ -39,13 +39,13 @@ void Webserver::status()
   char buffer[64];
   switch (StateManager::getState())
   {
-  case On:
+  case State::On:
     strcpy(buffer, "on");
     break;
-  case Off:
+  case State::Off:
     strcpy(buffer, "off");
     break;
-  case Monitor:
+  case State::Monitor:
     strcpy(buffer, "monitoring");
     break;
   }
@@ -82,7 +82,7 @@ void Webserver::off()
     return;
   }
 
-  StateManager::setState(Off);
+  StateManager::setState(State::Off);
   status();
 }
 
@@ -94,7 +94,7 @@ void Webserver::on()
     return;
   }
 
-  StateManager::setState(On);
+  StateManager::setState(State::On);
   status();
 }
 
@@ -106,7 +106,7 @@ void Webserver::monitor()
     return;
   }
 
-  StateManager::setState(Monitor);
+  StateManager::setState(State::Monitor);
   status();
 }
 

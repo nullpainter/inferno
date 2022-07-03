@@ -1,6 +1,7 @@
 #include <Arduino.h>
-#include "LedControl.h"
+#include <FastLED.h>
 #include "StateManager.h"
+#include "LedControl.h"
 
 State StateManager::_state = State::Off;
 bool StateManager::_initialised = false;
@@ -22,7 +23,8 @@ void StateManager::setState(State state, bool immediate)
 
     switch (state)
     {
-    case Off:
+    case State::Off:
+
         // Note that the state is deliberately not changed to off as this is intended
         // as a mechanism to silence alerts
         Serial.println("[StateManager] Turning LEDs off");
@@ -32,7 +34,7 @@ void StateManager::setState(State state, bool immediate)
             LedControl::fadeOut();
         }
         break;
-    case On:
+    case State::On:
         Serial.println("[StateManager] Updating state to on");
 
         if (!immediate)
@@ -42,14 +44,14 @@ void StateManager::setState(State state, bool immediate)
 
         _state = state;
         break;
-    case Monitor:
+    case State::Monitor:
         Serial.println("[StateManager] Updating state to monitor");
 
         if (!immediate)
         {
             // Briefly display flame effect when monitoring
-            LedControl::setIntensity(MAX_INTENSITY);
-            LedControl::fadeOut(FADE_DURATION, FADE_DURATION * 5);
+            LedControl::on();
+            LedControl::fadeOut(FADE_DURATION * 10);
         }
 
         _state = state;

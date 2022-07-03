@@ -3,7 +3,7 @@
 
 Inferno is a Slackbot-enabled LED flame, running on ESP8266 hardware. It's designed for use in a modded 100% Soft's [Dumpster Fire - This is Fine](https://100soft.shop/products/dumpster-fire-this-is-fine-vinyl-figure)  vinyl figure and for integration with Slack-based alerting. In addition to Slack integration, Inferno also provides a web server to control and display status.
 
-The flame effect is achieved by using two orange, one red and one yellow LED. Each LED is assigned a clamped random intensity and random period of time to remain at this intensity. A piece of baking paper is used to diffuse the LEDs.
+The flame effect is achieved by using a eight RGB LED disc with WS2812B LEDs. Random LEDs are periodically assigned a random flame intensity and faded out. A piece of baking paper is used to diffuse the LEDs.
 
 <img src="https://github.com/nullpainter/inferno/blob/main/images/animation.gif" alt="This is fine." />
 
@@ -22,6 +22,8 @@ Assuming a Slack bot has been created with the name `@Inferno`, the following co
 
 * `@Inferno on` turn on flame 
 * `@Inferno off` turn off flame, enable monitoring mode
+* `@Inferno party` turn on rainbow colour cycling
+* `@Inferno reset` reset to flame effect
 
 Additionally, if the text `[Alerting]` or `Triggered:` appears in any Slack channel that the Slack bot is a member of, Inferno turns on for a predefined period of time.
 
@@ -63,7 +65,7 @@ LED pin assignment is defined in `Inferno.h`. Pin to GPIO mappings can be found 
 The following Arduino libraries are required:
 
 * [WIFIManager](https://github.com/tzapu/WiFiManager)
-* [TaskScheduler](https://github.com/arkhipenko/TaskScheduler)
+* [FastLED](https://fastled.io/)
 * [ArduinoWebSockets](https://github.com/gilmaimon/ArduinoWebsockets)
 * [ArduinoJson](https://arduinojson.org/)
 * [Regexp](https://github.com/nickgammon/Regexp)

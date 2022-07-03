@@ -1,8 +1,7 @@
-
 #ifndef _STATEMANAGER_H_
 #define _STATEMANAGER_H_
 
-enum State
+enum class State
 {
     On,
     Off,
