@@ -5,7 +5,6 @@
 #include "StateManager.h"
 #include "Slackbot.h"
 #include "Storage.h"
-#include "Inferno.h"
 
 char Slackbot::_botId[64];
 char Slackbot::_oauthToken[128];

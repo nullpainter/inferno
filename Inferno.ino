@@ -5,7 +5,6 @@
 #include "Slackbot.h"
 #include "WifiControl.h"
 #include "LedControl.h"
-#include "Inferno.h"
 
 Webserver webserver;
 StateManager stateManager;

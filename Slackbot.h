@@ -7,6 +7,9 @@
 
 #include "UrlParser.h"
 
+// Duration to keep flame on after a monitoring alert (15 minutes)
+#define UNHEALTHY_DURATION 900000
+
 /**
  * @brief
  * @remark Code adapted from https://github.com/alexcorvis84/SlackBot/
