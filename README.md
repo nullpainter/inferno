@@ -3,7 +3,7 @@
 
 Inferno is a Slackbot-enabled LED flame, running on ESP8266 hardware. It's designed for use in a modded 100% Soft's [Dumpster Fire - This is Fine](https://100soft.shop/products/dumpster-fire-this-is-fine-vinyl-figure)  vinyl figure and for integration with Slack-based alerting. In addition to Slack integration, Inferno also provides a web server to control and display status.
 
-The flame effect is achieved by using a eight RGB LED disc with WS2812B LEDs. Random LEDs are periodically assigned a random flame intensity and faded out. A piece of baking paper is used to diffuse the LEDs.
+The flame effect is achieved by using an eight RGB LED disc with WS2812B LEDs. Random LEDs are periodically assigned a random flame intensity and faded out. A piece of baking paper is used to diffuse the LEDs.
 
 <img src="https://github.com/nullpainter/inferno/blob/main/images/animation.gif" alt="This is fine." />
 
