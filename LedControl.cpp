@@ -61,8 +61,7 @@ void LedControl::update()
     case FlameMode::Party:
       EVERY_N_MILLISECONDS(5)
       {
-        offset++;
-        fill_rainbow(_leds, NUM_LEDS, offset);
+        fill_rainbow(_leds, NUM_LEDS, offset++);
       }
 
       break;
