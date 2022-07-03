@@ -5,8 +5,8 @@ Inferno is a Slackbot-enabled LED flame, running on ESP8266 hardware. It's desig
 
 The flame effect is achieved by using an eight RGB LED disc with WS2812B LEDs. Random LEDs are periodically assigned a random flame intensity and faded out. A piece of baking paper is used to diffuse the LEDs.
 
-<img src="https://github.com/nullpainter/inferno/blob/main/images/animation.gif" width="48%" align="left" alt="This is fine." />
-<img src="https://github.com/nullpainter/inferno/blob/main/images/animation-party.gif" width="48%" style="margin-left: 15px" alt="W00t" />
+<img src="https://github.com/nullpainter/inferno/blob/main/images/animation.gif" width="48%" align="left" alt="This is fine." />&nbsp;&nbsp;
+<img src="https://github.com/nullpainter/inferno/blob/main/images/animation-party.gif" width="48%"  alt="W00t" />
 
 ## Glamour shots
 
