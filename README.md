@@ -68,7 +68,7 @@ The following Arduino libraries are required:
 
 * [WIFIManager](https://github.com/tzapu/WiFiManager)
 * [FastLED](https://fastled.io/)
-* [ArduinoWebSockets](https://github.com/gilmaimon/ArduinoWebsockets)
+* [ArduinoWebSockets](https://github.com/Links2004/arduinoWebSockets)
 * [ArduinoJson](https://arduinojson.org/)
 * [Regexp](https://github.com/nickgammon/Regexp)
 * [ESP8266WiFi](https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/readme.html)
